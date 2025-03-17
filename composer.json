@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": { "Carloshmfs\\": "src/" }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.0"
+    }
+}
