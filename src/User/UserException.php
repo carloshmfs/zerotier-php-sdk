@@ -6,6 +6,11 @@ use Exception;
 
 class UserException extends Exception
 {
+    public static function fetchUserFailed(string $message, int $code): self
+    {
+        return new self($message, $code);
+    }
+
     public static function authorizationRequired(): self
     {
         return new self('Authorization required', 401);

@@ -7,6 +7,17 @@ use PHPUnit\Framework\TestCase;
 
 class UserExceptionTest extends TestCase
 {
+    public function test_fetch_user_failed(): void
+    {
+        $message = 'An awesome error message';
+        $code = 666;
+
+        $exception = UserException::fetchUserFailed($message, $code);
+
+        $this->assertEquals($message, $exception->getMessage());
+        $this->assertEquals($code, $exception->getCode());
+    }
+
     public function test_access_denied_exception(): void
     {
         $message = 'Access denied';
