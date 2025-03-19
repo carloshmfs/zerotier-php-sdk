@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Carloshmfs\ZeroTierSDK\User\Entities\AuthEntity;
 use Carloshmfs\ZeroTierSDK\User\Entities\UserEntity;
 use Carloshmfs\ZeroTierSDK\User\UserResource;
 use GuzzleHttp\Client;
@@ -22,6 +23,11 @@ class UserResourceTest extends TestCase
                 'orgId' => '00000000-0000-0000-0000-000000000000',
                 'displayName' => 'Joe User',
                 'email' => 'user@example.com',
+                'auth' => [
+                    'local' => 'user@example.com',
+                    'google' => '156162346876134683',
+                    'oidc' => '00000000-0000-0000-0000-000000000000',
+                ],
                 'smsNumber' => '+1-800-555-1212',
             ])),
         ]);
@@ -36,6 +42,7 @@ class UserResourceTest extends TestCase
         $this->assertEquals($actualResponse->orgId, '00000000-0000-0000-0000-000000000000');
         $this->assertEquals($actualResponse->displayName, 'Joe User');
         $this->assertEquals($actualResponse->email, 'user@example.com');
+        $this->assertInstanceOf(AuthEntity::class, $actualResponse->auth);
         $this->assertEquals($actualResponse->smsNumber, '+1-800-555-1212');
     }
 }

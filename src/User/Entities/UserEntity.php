@@ -9,8 +9,10 @@ readonly class UserEntity
         public string $orgId,
         public string $displayName,
         public string $email,
+        public AuthEntity $auth,
         public string $smsNumber
-    ) {}
+    ) {
+    }
 
     public static function fromArray(array $data): self
     {
@@ -19,6 +21,7 @@ readonly class UserEntity
             orgId: $data['orgId'],
             displayName: $data['displayName'],
             email: $data['email'],
+            auth: AuthEntity::fromArray($data['auth']),
             smsNumber: $data['smsNumber']
         );
     }
