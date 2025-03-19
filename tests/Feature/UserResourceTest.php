@@ -29,6 +29,11 @@ class UserResourceTest extends TestCase
                     'oidc' => '00000000-0000-0000-0000-000000000000',
                 ],
                 'smsNumber' => '+1-800-555-1212',
+                'tokens' => [
+                    'my-token-id',
+                    'my-token-id2',
+                    'my-token-id3',
+                ],
             ])),
         ]);
 
@@ -44,5 +49,10 @@ class UserResourceTest extends TestCase
         $this->assertEquals($actualResponse->email, 'user@example.com');
         $this->assertInstanceOf(AuthEntity::class, $actualResponse->auth);
         $this->assertEquals($actualResponse->smsNumber, '+1-800-555-1212');
+        $this->assertEquals([
+            'my-token-id',
+            'my-token-id2',
+            'my-token-id3',
+        ], $actualResponse->tokens);
     }
 }

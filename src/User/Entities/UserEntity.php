@@ -10,7 +10,8 @@ readonly class UserEntity
         public string $displayName,
         public string $email,
         public AuthEntity $auth,
-        public string $smsNumber
+        public string $smsNumber,
+        public array $tokens
     ) {
     }
 
@@ -22,7 +23,8 @@ readonly class UserEntity
             displayName: $data['displayName'],
             email: $data['email'],
             auth: AuthEntity::fromArray($data['auth']),
-            smsNumber: $data['smsNumber']
+            smsNumber: $data['smsNumber'],
+            tokens: $data['tokens']
         );
     }
 }

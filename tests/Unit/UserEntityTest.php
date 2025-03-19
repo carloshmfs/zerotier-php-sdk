@@ -21,6 +21,11 @@ class UserEntityTest extends TestCase
         $displayName = 'Joe User';
         $email = 'user@example.com';
         $smsNumber = '1-800-555-1212';
+        $tokens = [
+            'my-token-id',
+            'my-token-id2',
+            'my-token-id3',
+        ];
 
         $entity = new UserEntity(
             $id,
@@ -28,7 +33,8 @@ class UserEntityTest extends TestCase
             $displayName,
             $email,
             $auth,
-            $smsNumber
+            $smsNumber,
+            $tokens
         );
 
         $this->assertEquals('00000000-0000-0000-0000-000000000000', $entity->id);
@@ -37,6 +43,11 @@ class UserEntityTest extends TestCase
         $this->assertEquals('user@example.com', $entity->email);
         $this->assertInstanceOf(AuthEntity::class, $entity->auth);
         $this->assertEquals('1-800-555-1212', $entity->smsNumber);
+        $this->assertEquals([
+            'my-token-id',
+            'my-token-id2',
+            'my-token-id3',
+        ], $entity->tokens);
     }
 
     public function test_can_instantiate_entiy_from_array(): void
@@ -52,6 +63,11 @@ class UserEntityTest extends TestCase
                 'oidc' => '00000000-0000-0000-0000-000000000000',
             ],
             'smsNumber' => '1-800-555-1212',
+            'tokens' => [
+                'my-token-id',
+                'my-token-id2',
+                'my-token-id3',
+            ],
         ]);
 
         $this->assertEquals('00000000-0000-0000-0000-000000000000', $entity->id);
