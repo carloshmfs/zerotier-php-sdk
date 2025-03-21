@@ -14,6 +14,7 @@ readonly class UserResource
 
     public function __construct(
         private Client $client,
+        #[\SensitiveParameter]
         private string $apiToken
     ) {
     }

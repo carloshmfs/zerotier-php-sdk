@@ -2,13 +2,15 @@
 
 namespace Carloshmfs\ZeroTierSDK\User\Entities;
 
+use Carloshmfs\ZeroTierSDK\Shared\ValueObject\Email;
+
 readonly class UserEntity
 {
     public function __construct(
         public string $id,
         public string $orgId,
         public string $displayName,
-        public string $email,
+        public Email $email,
         public AuthEntity $auth,
         public string $smsNumber,
         public array $tokens
@@ -21,7 +23,7 @@ readonly class UserEntity
             id: $data['id'],
             orgId: $data['orgId'],
             displayName: $data['displayName'],
-            email: $data['email'],
+            email: new Email($data['email']),
             auth: AuthEntity::fromArray($data['auth']),
             smsNumber: $data['smsNumber'],
             tokens: $data['tokens']

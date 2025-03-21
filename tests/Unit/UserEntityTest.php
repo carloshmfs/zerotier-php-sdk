@@ -2,6 +2,7 @@
 
 namespace Tests\Unit;
 
+use Carloshmfs\ZeroTierSDK\Shared\ValueObject\Email;
 use Carloshmfs\ZeroTierSDK\User\Entities\AuthEntity;
 use Carloshmfs\ZeroTierSDK\User\Entities\UserEntity;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +32,7 @@ class UserEntityTest extends TestCase
             $id,
             $orgId,
             $displayName,
-            $email,
+            new Email($email),
             $auth,
             $smsNumber,
             $tokens
