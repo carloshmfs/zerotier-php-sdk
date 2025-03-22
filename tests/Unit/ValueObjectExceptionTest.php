@@ -15,4 +15,13 @@ class ValueObjectExceptionTest extends TestCase
 
         $this->assertEquals($message, $exception->getMessage());
     }
+
+    public function test_invalid_uuid_format(): void
+    {
+        $message = 'Invalid uuid format';
+
+        $exception = ValueObjectException::invalidUUIDFormat();
+
+        $this->assertEquals($message, $exception->getMessage());
+    }
 }

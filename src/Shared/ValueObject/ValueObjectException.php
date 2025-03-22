@@ -10,4 +10,9 @@ class ValueObjectException extends Exception
     {
         return new self("Invalid email format");
     }
+
+    public static function invalidUUIDFormat(): self
+    {
+        return new self("Invalid uuid format");
+    }
 }
